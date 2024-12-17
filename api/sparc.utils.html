@@ -52,7 +52,6 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../package_components.html">SPARC-X-API Package Components</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="modules.html">sparc</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="sparc.html">sparc package</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="sparc.html#sparc.SPARCMissingDeps"><code class="docutils literal notranslate"><span class="pre">SPARCMissingDeps</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="sparc.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4 current"><a class="reference internal" href="sparc.html#submodules">Submodules</a></li>
 </ul>
@@ -95,116 +94,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="module-sparc.utils">
-<span id="sparc-utils-module"></span><h1>sparc.utils module<a class="headerlink" href="#module-sparc.utils" title="Link to this heading"></a></h1>
-<p>Utilities that are loosely related to core sparc functionalities</p>
-<dl class="py exception">
-<dt class="sig sig-object py" id="sparc.utils.ProcessReturned">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sparc.utils.</span></span><span class="sig-name descname"><span class="pre">ProcessReturned</span></span><a class="reference internal" href="../_modules/sparc/utils.html#ProcessReturned"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparc.utils.ProcessReturned" title="Link to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
-<p>Simple class for process that has returned</p>
-</dd></dl>
-
-<dl class="py exception">
-<dt class="sig sig-object py" id="sparc.utils.TimeoutException">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sparc.utils.</span></span><span class="sig-name descname"><span class="pre">TimeoutException</span></span><a class="reference internal" href="../_modules/sparc/utils.html#TimeoutException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparc.utils.TimeoutException" title="Link to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
-<p>Simple class for timeout</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="sparc.utils.compare_dict">
-<span class="sig-prename descclassname"><span class="pre">sparc.utils.</span></span><span class="sig-name descname"><span class="pre">compare_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sparc/utils.html#compare_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparc.utils.compare_dict" title="Link to this definition"></a></dt>
-<dd><p>Helper function to compare dictionaries</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="sparc.utils.cprint">
-<span class="sig-prename descclassname"><span class="pre">sparc.utils.</span></span><span class="sig-name descname"><span class="pre">cprint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">content</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">underline</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sparc/utils.html#cprint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparc.utils.cprint" title="Link to this definition"></a></dt>
-<dd><p>Color print wrapper for ansi terminal.
-Only a few color names are provided</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="sparc.utils.deprecated">
-<span class="sig-prename descclassname"><span class="pre">sparc.utils.</span></span><span class="sig-name descname"><span class="pre">deprecated</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sparc/utils.html#deprecated"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparc.utils.deprecated" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="sparc.utils.h2gpts">
-<span class="sig-prename descclassname"><span class="pre">sparc.utils.</span></span><span class="sig-name descname"><span class="pre">h2gpts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cell_cv</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idiv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sparc/utils.html#h2gpts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparc.utils.h2gpts" title="Link to this definition"></a></dt>
-<dd><p>Convert a h-parameter (Angstrom) to gpts</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="sparc.utils.locate_api">
-<span class="sig-prename descclassname"><span class="pre">sparc.utils.</span></span><span class="sig-name descname"><span class="pre">locate_api</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">json_file=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc_path=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cfg=&lt;ase.config.Config</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sparc/utils.html#locate_api"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparc.utils.locate_api" title="Link to this definition"></a></dt>
-<dd><p>Locate the SPARC API setup file with the following priority:
-1) If <cite>json_file</cite> is provided (either from parameter or cfg), use it directly.
-2) If <cite>doc_path</cite> is provided:</p>
-<blockquote>
-<div><ol class="loweralpha simple">
-<li><p>Function parameter takes precedence.</p></li>
-<li><p>Environment variable SPARC_DOC_PATH comes next.</p></li>
-<li><p>Configuration section [sparc] in the ini file is the last resort.</p></li>
-</ol>
-</div></blockquote>
-<ol class="arabic simple" start="3">
-<li><p>If both <cite>json_file</cite> and <cite>doc_path</cite> are provided, raise an exception.</p></li>
-<li><p>Fallback to the default API setup if neither is provided.</p></li>
-</ol>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="sparc.utils.monitor_process">
-<span class="sig-prename descclassname"><span class="pre">sparc.utils.</span></span><span class="sig-name descname"><span class="pre">monitor_process</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sparc/utils.html#monitor_process"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparc.utils.monitor_process" title="Link to this definition"></a></dt>
-<dd><p>Usage:
-try:</p>
-<blockquote>
-<div><dl class="simple">
-<dt>with monitor_process(process):</dt><dd><p>do_something()</p>
-</dd>
-</dl>
-</div></blockquote>
-<dl class="simple">
-<dt>except TimeoutException:</dt><dd><p>raise</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="sparc.utils.sanitize_path">
-<span class="sig-prename descclassname"><span class="pre">sparc.utils.</span></span><span class="sig-name descname"><span class="pre">sanitize_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sparc/utils.html#sanitize_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparc.utils.sanitize_path" title="Link to this definition"></a></dt>
-<dd><p>Sanitize path containing string in UNIX systems
-Returns a PosixPath object</p>
-<p>It is recommended to use this sanitize function
-before passing any path-like strings from cfg parser</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="sparc.utils.string2index">
-<span class="sig-prename descclassname"><span class="pre">sparc.utils.</span></span><span class="sig-name descname"><span class="pre">string2index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">slice</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/sparc/utils.html#string2index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparc.utils.string2index" title="Link to this definition"></a></dt>
-<dd><p>Convert index string to either int or slice
-This method is a copy of ase.io.formats.string2index</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="sparc.utils.time_limit">
-<span class="sig-prename descclassname"><span class="pre">sparc.utils.</span></span><span class="sig-name descname"><span class="pre">time_limit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seconds</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sparc/utils.html#time_limit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparc.utils.time_limit" title="Link to this definition"></a></dt>
-<dd><p>Usage:
-try:</p>
-<blockquote>
-<div><dl class="simple">
-<dt>with time_limit(60):</dt><dd><p>do_something()</p>
-</dd>
-</dl>
-</div></blockquote>
-<dl class="simple">
-<dt>except TimeoutException:</dt><dd><p>raise</p>
-</dd>
-</dl>
-</dd></dl>
-
+  <section id="sparc-utils-module">
+<h1>sparc.utils module<a class="headerlink" href="#sparc-utils-module" title="Link to this heading"></a></h1>
 </section>
 
 

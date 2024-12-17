@@ -52,7 +52,6 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../package_components.html">SPARC-X-API Package Components</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="modules.html">sparc</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="sparc.html">sparc package</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="sparc.html#sparc.SPARCMissingDeps"><code class="docutils literal notranslate"><span class="pre">SPARCMissingDeps</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="sparc.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4 current"><a class="reference internal" href="sparc.html#submodules">Submodules</a></li>
 </ul>
@@ -95,49 +94,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="module-sparc.client">
-<span id="sparc-client-module"></span><h1>sparc.client module<a class="headerlink" href="#module-sparc.client" title="Link to this heading"></a></h1>
-<dl class="py function">
-<dt class="sig sig-object py" id="sparc.client.main">
-<span class="sig-prename descclassname"><span class="pre">sparc.client.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sparc/client.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparc.client.main" title="Link to this definition"></a></dt>
-<dd><p>Running SPARC-X-API as a socket client from command line</p>
-<p>The client wraps a socket communication layer on top of the SPARC
-binary. The implementation is both compatible with
-<cite>SocketIOCalculator</cite> in ase (using standard i-PI protocol), or
-with SPARC-X-API in socket server mode (using SPARC’s extended
-i-PI protocol).</p>
-<p>Usage:
-1. Start the socket client and outputs to current directory:</p>
-<blockquote>
-<div><blockquote>
-<div><p>python -m sparc.client -s host:port –workdir .</p>
-</div></blockquote>
-<p>If the workdir is a SPARC calculation bundle, the initial atoms and parameters will be reloaded.</p>
-</div></blockquote>
-<ol class="arabic simple" start="2">
-<li><dl class="simple">
-<dt>Start the socket client with initial atoms read from file</dt><dd><p>python -m sparc.client -s host:port –atoms-from-file input.xyz</p>
-</dd>
-</dl>
-</li>
-</ol>
-<p>If the client is communicating with the standard i-PI server, an
-initial atoms object is required (either read from SPARC input
-files or via –atoms-from-file). However, if the server uses the
-SPARC protocol, the client can be started without initial atoms.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="sparc.client.split_socket_name">
-<span class="sig-prename descclassname"><span class="pre">sparc.client.</span></span><span class="sig-name descname"><span class="pre">split_socket_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sparc/client.html#split_socket_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparc.client.split_socket_name" title="Link to this definition"></a></dt>
-<dd><p>Split the host:address</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>(host, port, unixsocket) tuple</p>
-</dd>
-</dl>
-</dd></dl>
-
+  <section id="sparc-client-module">
+<h1>sparc.client module<a class="headerlink" href="#sparc-client-module" title="Link to this heading"></a></h1>
 </section>
 
 
