@@ -7,7 +7,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>sparc.sparc_parsers.pseudopotential module &mdash; SPARC-X-API  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
   
@@ -52,6 +52,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../package_components.html">SPARC-X-API Package Components</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="modules.html">sparc</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="sparc.html">sparc package</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="sparc.html#sparc.SPARCMissingDeps"><code class="docutils literal notranslate"><span class="pre">SPARCMissingDeps</span></code></a></li>
 <li class="toctree-l4 current"><a class="reference internal" href="sparc.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="sparc.html#submodules">Submodules</a></li>
 </ul>
@@ -62,7 +63,6 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../advanced_topics.html">Advanced Topics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api_changes.html">Changes in API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contribute.html">How to Contribute</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../maintainers.html">Documentation for Maintainers</a></li>
 </ul>
@@ -95,8 +95,75 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="sparc-sparc-parsers-pseudopotential-module">
-<h1>sparc.sparc_parsers.pseudopotential module<a class="headerlink" href="#sparc-sparc-parsers-pseudopotential-module" title="Link to this heading"></a></h1>
+  <section id="module-sparc.sparc_parsers.pseudopotential">
+<span id="sparc-sparc-parsers-pseudopotential-module"></span><h1>sparc.sparc_parsers.pseudopotential module<a class="headerlink" href="#module-sparc.sparc_parsers.pseudopotential" title="Link to this heading"></a></h1>
+<p>Provide a simple parser for pseudo potentials</p>
+<p>The psp8 format is defined in abinit manual
+<a class="reference external" href="https://docs.abinit.org/developers/psp8_info/">https://docs.abinit.org/developers/psp8_info/</a></p>
+<p>The first</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="sparc.sparc_parsers.pseudopotential.MultiplePseudoPotentialFiles">
+<em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sparc.sparc_parsers.pseudopotential.</span></span><span class="sig-name descname"><span class="pre">MultiplePseudoPotentialFiles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sparc/sparc_parsers/pseudopotential.html#MultiplePseudoPotentialFiles"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparc.sparc_parsers.pseudopotential.MultiplePseudoPotentialFiles" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="sparc.sparc_parsers.pseudopotential.NoMatchingPseudopotential">
+<em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sparc.sparc_parsers.pseudopotential.</span></span><span class="sig-name descname"><span class="pre">NoMatchingPseudopotential</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sparc/sparc_parsers/pseudopotential.html#NoMatchingPseudopotential"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparc.sparc_parsers.pseudopotential.NoMatchingPseudopotential" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">FileNotFoundError</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="sparc.sparc_parsers.pseudopotential.NotPSP8Format">
+<em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sparc.sparc_parsers.pseudopotential.</span></span><span class="sig-name descname"><span class="pre">NotPSP8Format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sparc/sparc_parsers/pseudopotential.html#NotPSP8Format"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparc.sparc_parsers.pseudopotential.NotPSP8Format" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparc.sparc_parsers.pseudopotential.copy_psp_file">
+<span class="sig-prename descclassname"><span class="pre">sparc.sparc_parsers.pseudopotential.</span></span><span class="sig-name descname"><span class="pre">copy_psp_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source_pot</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_symbol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sparc/sparc_parsers/pseudopotential.html#copy_psp_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparc.sparc_parsers.pseudopotential.copy_psp_file" title="Link to this definition"></a></dt>
+<dd><p>Copy the pseudo potential file <cite>source_pot</cite> under <cite>target_dir</cite></p>
+<p>if use_symbol is True, rename the potential to ‘{symbol}.psp8’</p>
+<p>the function returns the name of the pseudo potential file</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparc.sparc_parsers.pseudopotential.find_pseudo_path">
+<span class="sig-prename descclassname"><span class="pre">sparc.sparc_parsers.pseudopotential.</span></span><span class="sig-name descname"><span class="pre">find_pseudo_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pseudopotential_mapping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sparc/sparc_parsers/pseudopotential.html#find_pseudo_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparc.sparc_parsers.pseudopotential.find_pseudo_path" title="Link to this definition"></a></dt>
+<dd><p>Get the pseudo potential file at best effort</p>
+<p>Searching priorities
+1) if pseudopotential_mapping has symbol as key, use the file name</p>
+<blockquote>
+<div><p>There are two possibilities
+i) filename does not contain directory information: i.e. Na-pbe.pot</p>
+<blockquote>
+<div><p>use search_path / filename for the mapping</p>
+</div></blockquote>
+<ol class="lowerroman simple" start="2">
+<li><p>filename contains directory information, directly use the file name</p></li>
+</ol>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>No pseudopotential_mapping is given, get the psp from search_path</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparc.sparc_parsers.pseudopotential.infer_pseudo_path">
+<span class="sig-prename descclassname"><span class="pre">sparc.sparc_parsers.pseudopotential.</span></span><span class="sig-name descname"><span class="pre">infer_pseudo_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sparc/sparc_parsers/pseudopotential.html#infer_pseudo_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparc.sparc_parsers.pseudopotential.infer_pseudo_path" title="Link to this definition"></a></dt>
+<dd><p>Given an element symbol like ‘Na’, get the file name
+of the search_path (resolved) that search through the search path</p>
+<p>TODO: shall we support multiple directories?
+TODO: add a <cite>setup</cite> option like VASP?</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparc.sparc_parsers.pseudopotential.parse_psp8_header">
+<span class="sig-prename descclassname"><span class="pre">sparc.sparc_parsers.pseudopotential.</span></span><span class="sig-name descname"><span class="pre">parse_psp8_header</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sparc/sparc_parsers/pseudopotential.html#parse_psp8_header"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparc.sparc_parsers.pseudopotential.parse_psp8_header" title="Link to this definition"></a></dt>
+<dd><p>Parse the first 4 lines of psp8 text
+if parsing failed, raise exception</p>
+</dd></dl>
+
 </section>
 
 

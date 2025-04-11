@@ -7,7 +7,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Simple DFT workflows with SPARC-X-API &mdash; SPARC-X-API  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
   
@@ -58,7 +58,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../package_components.html">SPARC-X-API Package Components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../advanced_topics.html">Advanced Topics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api_changes.html">Changes in API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contribute.html">How to Contribute</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../maintainers.html">Documentation for Maintainers</a></li>
 </ul>
@@ -97,10 +96,11 @@ from other codes like VASP, QE or GPAW.</p>
 <p>Here we show a simple example that calculates the equation of state
 (EOS) of bulk aluminum and determine its optimal lattice constant,
 adapted from GPAW’s
-<a class="reference external" href="https://wiki.fysik.dtu.dk/gpaw/tutorialsexercises/structureoptimization/lattice_constants/lattice_constants.html">tutorial</a>. In
+<a class="reference external" href="https://wiki.fysik.dtu.dk/gpaw/tutorialsexercises/structureoptimization/lattice_constants/lattice_constants.html">tutorial</a>. The full python script for this example can be downloaded <a class="reference external" href="https://raw.githubusercontent.com/SPARC-X/SPARC-X-API/refs/heads/master/examples/simple_examples/ex0-eos.py">here</a>.</p>
+<p>In
 the GPAW tutorial, a GPAW calculator in Planewave (PW) mode is created
 like follows:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gpaw</span> <span class="kn">import</span> <span class="n">GPAW</span><span class="p">,</span> <span class="n">PW</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">gpaw</span><span class="w"> </span><span class="kn">import</span> <span class="n">GPAW</span><span class="p">,</span> <span class="n">PW</span>
 <span class="n">calc</span> <span class="o">=</span> <span class="n">GPAW</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="n">PW</span><span class="p">(</span><span class="n">ecut</span><span class="p">),</span>
             <span class="n">xc</span><span class="o">=</span><span class="s1">&#39;PBE&#39;</span><span class="p">,</span>
             <span class="n">kpts</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
@@ -114,14 +114,14 @@ convergence. To avoid large “egg-box effect” due to large mesh
 spacing, we recommend to use a smaller <code class="docutils literal notranslate"><span class="pre">h</span></code> value. For demonstration
 purpose a rather rough mesh spacing <code class="docutils literal notranslate"><span class="pre">h=0.25</span></code> (in Angstrom) and a 3x3x3
 k-points are used.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">ase.build</span> <span class="kn">import</span> <span class="n">bulk</span>
-<span class="kn">from</span> <span class="nn">ase.eos</span> <span class="kn">import</span> <span class="n">calculate_eos</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ase.build</span><span class="w"> </span><span class="kn">import</span> <span class="n">bulk</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ase.eos</span><span class="w"> </span><span class="kn">import</span> <span class="n">calculate_eos</span>
 
-<span class="kn">from</span> <span class="nn">sparc</span> <span class="kn">import</span> <span class="n">SPARC</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sparc</span><span class="w"> </span><span class="kn">import</span> <span class="n">SPARC</span>
 
 
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="c1"># Al in conventional cell</span>
     <span class="n">atoms</span> <span class="o">=</span> <span class="n">bulk</span><span class="p">(</span><span class="s2">&quot;Al&quot;</span><span class="p">,</span> <span class="n">cubic</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">calc</span> <span class="o">=</span> <span class="n">SPARC</span><span class="p">(</span><span class="n">h</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">kpts</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">xc</span><span class="o">=</span><span class="s2">&quot;pbe&quot;</span><span class="p">,</span> <span class="n">directory</span><span class="o">=</span><span class="s2">&quot;ex0-eos&quot;</span><span class="p">)</span>
@@ -146,6 +146,13 @@ k-points are used.</p>
 </pre></div>
 </div>
 <p>The output from the above example may look like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fitted</span> <span class="n">volume</span> <span class="p">(</span><span class="n">Ang</span><span class="o">^</span><span class="mi">3</span><span class="p">),</span> <span class="n">energy</span> <span class="p">(</span><span class="n">eV</span><span class="p">),</span> <span class="n">modulus</span> <span class="p">(</span><span class="n">eV</span><span class="o">/</span><span class="n">Ang</span><span class="o">^</span><span class="mi">3</span><span class="p">)</span>
+<span class="mf">65.97840834969949</span> <span class="o">-</span><span class="mf">253.07755156337953</span> <span class="mf">2.9095110471623173</span>
+<span class="n">Optimal</span> <span class="n">cell</span> <span class="n">length</span> <span class="p">(</span><span class="n">cubic</span><span class="p">):</span> <span class="mf">4.040799280428726</span> <span class="n">Ang</span>
+<span class="n">Energy</span> <span class="n">calculated</span> <span class="n">by</span> <span class="n">SPARC</span><span class="p">:</span> <span class="o">-</span><span class="mf">253.0552324051582</span> <span class="n">eV</span>
+<span class="n">Energy</span> <span class="n">diff</span> <span class="mf">0.02231915822133601</span> <span class="n">eV</span>
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This example uses file I/O mode for demonstration purpose only. Consider choosing the <a class="reference internal" href="../advanced_socket.html"><span class="std std-doc">socket mode</span></a> if you need more flexibility.</p>

@@ -7,7 +7,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>sparc.sparc_parsers package &mdash; SPARC-X-API  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
 
   
@@ -52,6 +52,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../package_components.html">SPARC-X-API Package Components</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="modules.html">sparc</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="sparc.html">sparc package</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="sparc.html#sparc.SPARCMissingDeps"><code class="docutils literal notranslate"><span class="pre">SPARCMissingDeps</span></code></a></li>
 <li class="toctree-l4 current"><a class="reference internal" href="sparc.html#subpackages">Subpackages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="sparc.html#submodules">Submodules</a></li>
 </ul>
@@ -62,7 +63,6 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../advanced_topics.html">Advanced Topics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api_changes.html">Changes in API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contribute.html">How to Contribute</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../maintainers.html">Documentation for Maintainers</a></li>
 </ul>
@@ -94,21 +94,50 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="sparc-sparc-parsers-package">
-<h1>sparc.sparc_parsers package<a class="headerlink" href="#sparc-sparc-parsers-package" title="Link to this heading"></a></h1>
+  <section id="module-sparc.sparc_parsers">
+<span id="sparc-sparc-parsers-package"></span><h1>sparc.sparc_parsers package<a class="headerlink" href="#module-sparc.sparc_parsers" title="Link to this heading"></a></h1>
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="sparc.sparc_parsers.aimd.html">sparc.sparc_parsers.aimd module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sparc.sparc_parsers.atoms.html">sparc.sparc_parsers.atoms module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sparc.sparc_parsers.atoms.html">sparc.sparc_parsers.atoms module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sparc.sparc_parsers.atoms.html#sparc.sparc_parsers.atoms.atoms_bc_to_sparc"><code class="docutils literal notranslate"><span class="pre">atoms_bc_to_sparc()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sparc.sparc_parsers.atoms.html#sparc.sparc_parsers.atoms.atoms_to_dict"><code class="docutils literal notranslate"><span class="pre">atoms_to_dict()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sparc.sparc_parsers.atoms.html#sparc.sparc_parsers.atoms.constraints_from_relax"><code class="docutils literal notranslate"><span class="pre">constraints_from_relax()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sparc.sparc_parsers.atoms.html#sparc.sparc_parsers.atoms.count_symbols"><code class="docutils literal notranslate"><span class="pre">count_symbols()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sparc.sparc_parsers.atoms.html#sparc.sparc_parsers.atoms.dict_to_atoms"><code class="docutils literal notranslate"><span class="pre">dict_to_atoms()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sparc.sparc_parsers.atoms.html#sparc.sparc_parsers.atoms.modify_atoms_bc"><code class="docutils literal notranslate"><span class="pre">modify_atoms_bc()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sparc.sparc_parsers.atoms.html#sparc.sparc_parsers.atoms.relax_from_all_constraints"><code class="docutils literal notranslate"><span class="pre">relax_from_all_constraints()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sparc.sparc_parsers.atoms.html#sparc.sparc_parsers.atoms.relax_from_constraint"><code class="docutils literal notranslate"><span class="pre">relax_from_constraint()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="sparc.sparc_parsers.geopt.html">sparc.sparc_parsers.geopt module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sparc.sparc_parsers.inpt.html">sparc.sparc_parsers.inpt module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sparc.sparc_parsers.ion.html">sparc.sparc_parsers.ion module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sparc.sparc_parsers.ion.html">sparc.sparc_parsers.ion module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sparc.sparc_parsers.ion.html#sparc.sparc_parsers.ion.InvalidSortingComment"><code class="docutils literal notranslate"><span class="pre">InvalidSortingComment</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="sparc.sparc_parsers.out.html">sparc.sparc_parsers.out module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sparc.sparc_parsers.pseudopotential.html">sparc.sparc_parsers.pseudopotential module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sparc.sparc_parsers.pseudopotential.html">sparc.sparc_parsers.pseudopotential module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sparc.sparc_parsers.pseudopotential.html#sparc.sparc_parsers.pseudopotential.MultiplePseudoPotentialFiles"><code class="docutils literal notranslate"><span class="pre">MultiplePseudoPotentialFiles</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sparc.sparc_parsers.pseudopotential.html#sparc.sparc_parsers.pseudopotential.NoMatchingPseudopotential"><code class="docutils literal notranslate"><span class="pre">NoMatchingPseudopotential</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sparc.sparc_parsers.pseudopotential.html#sparc.sparc_parsers.pseudopotential.NotPSP8Format"><code class="docutils literal notranslate"><span class="pre">NotPSP8Format</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sparc.sparc_parsers.pseudopotential.html#sparc.sparc_parsers.pseudopotential.copy_psp_file"><code class="docutils literal notranslate"><span class="pre">copy_psp_file()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sparc.sparc_parsers.pseudopotential.html#sparc.sparc_parsers.pseudopotential.find_pseudo_path"><code class="docutils literal notranslate"><span class="pre">find_pseudo_path()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sparc.sparc_parsers.pseudopotential.html#sparc.sparc_parsers.pseudopotential.infer_pseudo_path"><code class="docutils literal notranslate"><span class="pre">infer_pseudo_path()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sparc.sparc_parsers.pseudopotential.html#sparc.sparc_parsers.pseudopotential.parse_psp8_header"><code class="docutils literal notranslate"><span class="pre">parse_psp8_header()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="sparc.sparc_parsers.static.html">sparc.sparc_parsers.static module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sparc.sparc_parsers.utils.html">sparc.sparc_parsers.utils module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sparc.sparc_parsers.utils.html">sparc.sparc_parsers.utils module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sparc.sparc_parsers.utils.html#sparc.sparc_parsers.utils.bisect_and_strip"><code class="docutils literal notranslate"><span class="pre">bisect_and_strip()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sparc.sparc_parsers.utils.html#sparc.sparc_parsers.utils.get_label"><code class="docutils literal notranslate"><span class="pre">get_label()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sparc.sparc_parsers.utils.html#sparc.sparc_parsers.utils.make_reverse_mapping"><code class="docutils literal notranslate"><span class="pre">make_reverse_mapping()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sparc.sparc_parsers.utils.html#sparc.sparc_parsers.utils.read_block_input"><code class="docutils literal notranslate"><span class="pre">read_block_input()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sparc.sparc_parsers.utils.html#sparc.sparc_parsers.utils.strip_comments"><code class="docutils literal notranslate"><span class="pre">strip_comments()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </div>
 </section>
