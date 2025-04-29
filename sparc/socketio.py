@@ -7,6 +7,8 @@ import pickle
 import random
 import socket
 import string
+import sys
+import logging
 
 import numpy as np
 from ase.calculators.socketio import (
@@ -178,7 +180,23 @@ class SPARCSocketServer(SocketServer):
         parent=None
         # launch_client=None,
     ):
-        super().__init__(port=port, unixsocket=unixsocket, timeout=timeout, log=log)
+        
+        # This will attempt to bind the port
+        # super().__init__(port=port, unixsocket=unixsocket, timeout=timeout, log=log)
+        if unixsocket is not None:
+            super().__init__(unixsocket=unixsocket, timeout=timeout, log=log)
+        # Taking what I need from parent class
+        # TODO: Clean this up
+        else:
+            if unixsocket is None and port is None:
+                port = self.default_port
+            elif unixsocket is not None and port is not None:
+                raise ValueError("Cannot bind to both unixsocket and port")
+            self.port = port
+            self.unixsocket = unixsocket
+            self.timeout = timeout
+            self._closed = False
+
         self.parent = parent
         print("Parent : ", self.parent)
         if self.parent is not None:
@@ -357,6 +375,11 @@ class SPARCSocketClient(SocketClient):
                 else:
                     raise KeyError("Bad message", msg)
         finally:
+            self.protocol.log(' Closing in irun')
+            exc_type, exc_val, exc_tb = sys.exc_info()
+            if exc_type not in (None, StopIteration, GeneratorExit):
+                logging.error("irun closed due to uncaught exception",
+                              exc_info=(exc_type, exc_val, exc_tb))
             self.close()
 
     def run(self, atoms=None, use_stress=False):

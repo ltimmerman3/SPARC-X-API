@@ -5,6 +5,7 @@ import subprocess
 import tempfile
 from pathlib import Path
 from warnings import warn, warn_explicit
+import traceback
 
 import numpy as np
 import psutil
@@ -101,6 +102,7 @@ class SPARC(FileIOCalculator, IOContext):
         keep_old_files=True,
         use_socket=False,
         socket_params={},
+        protocol=None,
         **kwargs,
     ):
         """
@@ -133,6 +135,7 @@ class SPARC(FileIOCalculator, IOContext):
         self.special_params = {}
         self.inpt_state = {}  # Store the inpt file states
         self.system_state = {}  # Store the system parameters (directory, bundle etc)
+        self.protocol = protocol
         FileIOCalculator.__init__(
             self,
             restart=None,
@@ -268,6 +271,7 @@ class SPARC(FileIOCalculator, IOContext):
                     ),
                     parent=self,
                 )
+                self.in_socket.protocol = self.protocol
             else:
                 socket_name = generate_random_socket_name()
                 print(f"Creating a socket server with name {socket_name}")
@@ -304,6 +308,8 @@ class SPARC(FileIOCalculator, IOContext):
 
     def __exit__(self, type, value, traceback):
         """Exiting the context manager and reset process"""
+        if self.in_socket is not None:
+            self.in_socket.protocol.log(' Closing in __exit__')
         IOContext.__exit__(self, type, value, traceback)
         self.close()
         return
@@ -430,13 +436,20 @@ class SPARC(FileIOCalculator, IOContext):
                 ]
                 * len(atoms_copy)
             )
+        # Confusing, should just call Calculator.check_state
         system_changes = FileIOCalculator.check_state(self, atoms_copy, tol=tol)
         # A few hard-written rules. Wrapping should only affect the position
-        if "positions" in system_changes:
-            atoms_copy.wrap(eps=tol)
-            new_system_changes = FileIOCalculator.check_state(self, atoms_copy, tol=tol)
-            if "positions" not in new_system_changes:
-                system_changes.remove("positions")
+        if self.atoms is not None:
+            if "positions" in system_changes:
+                atoms_copy.wrap(eps=tol)
+                new_system_changes = FileIOCalculator.check_state(self, atoms_copy, tol=tol)
+                if "positions" not in new_system_changes:
+                    system_changes.remove("positions")
+                else:
+                    self.atoms.wrap(eps=tol)
+                    new_system_changes = FileIOCalculator.check_state(self, atoms_copy, tol=tol)
+                    if "positions" not in new_system_changes:
+                        system_changes.remove("positions")
 
         system_state_changed = not self._compare_system_state()
         if system_state_changed:
@@ -561,6 +574,7 @@ class SPARC(FileIOCalculator, IOContext):
         """Perform a calculation step"""
 
         self.check_input_atoms(atoms)
+        # Sets up directories, no actual calc
         Calculator.calculate(self, atoms, properties, system_changes)
 
         # Extra check for inpt parameters since check_state won't accept properties
@@ -637,6 +651,7 @@ class SPARC(FileIOCalculator, IOContext):
         ):
             if self.process is not None:
                 if not self.socket_params["allow_restart"]:
+                    print(self.atoms)
                     raise RuntimeError(
                         (
                             f"System has changed {system_changes} and the "
@@ -649,6 +664,7 @@ class SPARC(FileIOCalculator, IOContext):
                     print(
                         f"{system_changes} have changed since last calculation. Restart the socket process."
                     )
+                self.in_socket.protocol.log(' Closing due to parameter change')
                 self.close(keep_out_socket=True)
 
         if self.process is None:
@@ -843,6 +859,8 @@ class SPARC(FileIOCalculator, IOContext):
         if not self.use_socket:
             return
         if self.in_socket is not None:
+            print("close() called!  Traceback ↓↓↓\n%s",
+                    "".join(traceback.format_stack(limit=10)))
             self.in_socket.close()
 
         if (self.out_socket is not None) and (not keep_out_socket):
