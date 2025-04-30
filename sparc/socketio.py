@@ -180,23 +180,7 @@ class SPARCSocketServer(SocketServer):
         parent=None
         # launch_client=None,
     ):
-        
-        # This will attempt to bind the port
-        # super().__init__(port=port, unixsocket=unixsocket, timeout=timeout, log=log)
-        if unixsocket is not None:
-            super().__init__(unixsocket=unixsocket, timeout=timeout, log=log)
-        # Taking what I need from parent class
-        # TODO: Clean this up
-        else:
-            if unixsocket is None and port is None:
-                port = self.default_port
-            elif unixsocket is not None and port is not None:
-                raise ValueError("Cannot bind to both unixsocket and port")
-            self.port = port
-            self.unixsocket = unixsocket
-            self.timeout = timeout
-            self._closed = False
-
+        super().__init__(port=port, unixsocket=unixsocket, timeout=timeout, log=log)
         self.parent = parent
         print("Parent : ", self.parent)
         if self.parent is not None:
